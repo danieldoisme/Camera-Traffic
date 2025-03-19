@@ -56,4 +56,21 @@ document.addEventListener("DOMContentLoaded", function () {
     "rgba(153, 102, 255, 0.2)",
     "rgba(153, 102, 255, 1)"
   );
+
+  // Webcam access
+  const video = document.getElementById("cameraFeed");
+
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices
+      .getUserMedia({ video: true })
+      .then(function (stream) {
+        video.srcObject = stream;
+        video.play();
+      })
+      .catch(function (error) {
+        console.error("Error accessing webcam:", error);
+      });
+  } else {
+    console.error("getUserMedia not supported");
+  }
 });
