@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Camera Streams</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <style>
+      /* CSS cho camera container */
+      .camera-container {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        /* 6 cột */
+        grid-template-rows: repeat(4, 1fr);
+        /* 4 hàng */
+        gap: 20px;
+        /* Khoảng cách giữa các ảnh */
+        padding: 20px;
+        /* Padding để cách lề ngoài */
+        height: auto;
+        /* Đổi thành auto để tự điều chỉnh chiều cao theo nội dung */
+        margin-bottom: 10px;
+        /* Giữ khoảng cách với pagination */
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Thanh sidebar -->
+    <div class="sidebar">
+      <h3 class="camera-home-title">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/4269/4269808.png"
+          alt="Camera Icon"
+          class="sidebar-icon"
+        />
+        Camera Home
+      </h3>
+      <a href="index.html">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/8899/8899687.png"
+          alt="Dashboard Icon"
+          class="sidebar-icon"
+        />
+        Dashboard
+      </a>
+      <a href="channels.html">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/2818/2818072.png"
+          alt="Channels Icon"
+          class="sidebar-icon"
+        />
+        Channels
+      </a>
+      <a href="groups.html">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/4144/4144517.png"
+          alt="Groups Icon"
+          class="sidebar-icon"
+        />
+        Groups
+      </a>
+      <a href="output.html">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/3488/3488340.png"
+          alt="Output Icon"
+          class="sidebar-icon"
+        />
+        Output
+      </a>
+      <a href="#">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/675/675729.png"
+          alt="Settings Icon"
+          class="sidebar-icon"
+        />
+        Settings
+      </a>
+      <hr class="divider" />
+      <a href="#">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/14993/14993522.png"
+          alt="Logout Icon"
+          class="sidebar-icon"
+        />
+        Logout
+      </a>
+    </div>
+
+    <!-- Nội dung chính -->
+    <div class="content">
+      <!-- Thanh search -->
+      <div class="topbar">
+        <div class="search-container">
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/16020/16020060.png"
+            alt="Custom Icon"
+            class="custom-search-icon"
+          />
+          <input type="text" class="form-control" placeholder="Search" />
+        </div>
+        <div class="admin-container">
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/4814/4814852.png"
+            alt="Avatar"
+            class="avatar"
+          />
+          <button class="btn btn-dark admin-btn">
+            Hello, Thắng
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/10255/10255622.png"
+              alt="Triangle Icon"
+            />
+          </button>
+        </div>
+      </div>
+
+      <!-- Thanh mới (Screenshots) -->
+      <div class="screenshot-bar">
+        <span class="screenshot-title">Screenshots</span>
+        <span class="screenshot-description"
+          >Những bức ảnh screenshot hủy diệt cùng đaika Thắng vipro</span
+        >
+        <button class="screenshot-btn download-btn">
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/2550/2550364.png"
+            alt="Download Icon"
+          />
+          Image Downloader
+        </button>
+        <button class="screenshot-btn resize-btn">
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/1375/1375106.png"
+            alt="Resize Icon"
+          />
+          Image Resizer
+        </button>
+        <button class="screenshot-btn remove-btn">
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/8997/8997755.png"
+            alt="Remove Icon"
+          />
+          Remove Noisy Object
+        </button>
+      </div>
+      <!-- Phần chứa 24 ảnh -->
+      <div class="camera-container">
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 1</h3>
+          <div class="stream">
+            <img
+              src="1_Vehicle.jpg"
+              alt="Image 1"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 2</h3>
+          <div class="stream">
+            <img
+              src="2_Vehicle.jpg"
+              alt="Image 2"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 3</h3>
+          <div class="stream">
+            <img
+              src="3_Vehicle.jpg"
+              alt="Image 3"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 4</h3>
+          <div class="stream">
+            <img
+              src="4_Vehicle.jpg"
+              alt="Image 4"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 5</h3>
+          <div class="stream">
+            <img
+              src="5_Vehicle.jpg"
+              alt="Image 5"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 6</h3>
+          <div class="stream">
+            <img
+              src="6_Vehicle.jpg"
+              alt="Image 6"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 7</h3>
+          <div class="stream">
+            <img
+              src="7_Vehicle.jpg"
+              alt="Image 7"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 8</h3>
+          <div class="stream">
+            <img
+              src="8_Vehicle.jpg"
+              alt="Image 8"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 9</h3>
+          <div class="stream">
+            <img
+              src="9_Vehicle.jpg"
+              alt="Image 9"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 10</h3>
+          <div class="stream">
+            <img
+              src="10_Vehicle.jpg"
+              alt="Image 10"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 11</h3>
+          <div class="stream">
+            <img
+              src="11_Vehicle.jpg"
+              alt="Image 11"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 12</h3>
+          <div class="stream">
+            <img
+              src="12_Vehicle.jpg"
+              alt="Image 12"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 13</h3>
+          <div class="stream">
+            <img
+              src="13_Vehicle.jpg"
+              alt="Image 13"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 14</h3>
+          <div class="stream">
+            <img
+              src="14_Vehicle.jpg"
+              alt="Image 14"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 15</h3>
+          <div class="stream">
+            <img
+              src="15_Vehicle.jpg"
+              alt="Image 15"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 16</h3>
+          <div class="stream">
+            <img
+              src="16_Vehicle.jpg"
+              alt="Image 16"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 17</h3>
+          <div class="stream">
+            <img
+              src="17_Vehicle.jpg"
+              alt="Image 17"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 18</h3>
+          <div class="stream">
+            <img
+              src="18_Vehicle.jpg"
+              alt="Image 18"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 19</h3>
+          <div class="stream">
+            <img
+              src="19_Vehicle.jpg"
+              alt="Image 19"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 20</h3>
+          <div class="stream">
+            <img
+              src="20_Vehicle.jpg"
+              alt="Image 20"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 21</h3>
+          <div class="stream">
+            <img
+              src="21_Vehicle.jpg"
+              alt="Image 21"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 22</h3>
+          <div class="stream">
+            <img
+              src="22_Vehicle.jpg"
+              alt="Image 22"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 23</h3>
+          <div class="stream">
+            <img
+              src="23_Vehicle.jpg"
+              alt="Image 23"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+        <div class="stream-wrapper">
+          <h3 class="stream-header">Image 24</h3>
+          <div class="stream">
+            <img
+              src="24_Vehicle.jpg"
+              alt="Image 24"
+              width="100%"
+              height="100%"
+              style="object-fit: cover; border-radius: 8px"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Phân trang -->
+      <div class="pagination">
+        <a href="#" class="page-link">Previous</a> |
+        <span class="page-info">Page 4 of 96</span> |
+        <a href="#" class="page-link">Next</a>
+      </div>
+
+      <!-- Thanh thông tin -->
+      <div class="info-bar">
+        <div class="info-content">
+          <span>Nhóm Vippro</span>
+          <div class="links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms and conditions</a>
+            <a href="#">Contact</a>
+            <a href="#">Apps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scripts.js"></script>
+  </body>
+</html>
