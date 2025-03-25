@@ -14,7 +14,6 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../assets/css/styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../assets/js/scripts.js"></script>
   </head>
 
@@ -28,7 +27,7 @@
         />
         Camera Home
       </h3>
-      <a href="index.html">
+      <a href="/index.html">
         <img
           src="https://cdn-icons-png.flaticon.com/128/8899/8899687.png"
           alt="Dashboard Icon"
@@ -122,20 +121,20 @@
         <div class="left-panel">
           <div class="card-box">
             <div class="card">
-              <h3>Collision</h3>
-              <span>0</span>
+              <h3>Motorbike</h3>
+              <span id="motorbikeCount">0</span>
             </div>
             <div class="card">
-              <h3>Pedestrian</h3>
-              <span>0</span>
+              <h3>Car</h3>
+              <span id="carCount">0</span>
             </div>
             <div class="card">
-              <h3>Vehicle</h3>
-              <span>0</span>
+              <h3>Bus</h3>
+              <span id="busCount">0</span>
             </div>
             <div class="card">
-              <h3>Bike</h3>
-              <span>0</span>
+              <h3>Truck</h3>
+              <span id="truckCount">0</span>
             </div>
           </div>
           <div class="stream-wrapper">
@@ -162,24 +161,23 @@
         </div>
         <div class="right-panel">
           <div class="chart-container">
-            <h3 class="chart-title">Traffic Flow</h3>
+            <h3 class="chart-title">Traffic Motorbike</h3>
             <canvas id="trafficFlow"></canvas>
           </div>
           <div class="chart-container">
-            <h3 class="chart-title">Traffic Analysis</h3>
+            <h3 class="chart-title">Traffic Car</h3>
             <canvas id="trafficAnalysis"></canvas>
           </div>
           <div class="chart-container">
-            <h3 class="chart-title">Collision Near Miss</h3>
+            <h3 class="chart-title">Traffic Bus</h3>
             <canvas id="collisionNearMiss"></canvas>
           </div>
           <div class="chart-container">
-            <h3 class="chart-title">Collision Analysis</h3>
+            <h3 class="chart-title">Traffic Truck</h3>
             <canvas id="collisionAnalysis"></canvas>
           </div>
         </div>
       </div>
-      <!-- Thêm thanh thông tin -->
       <div class="info-bar">
         <div class="info-content">
           <span>Nhóm Vippro</span>
@@ -193,5 +191,6 @@
         </div>
       </div>
     </div>
+    <script src="../assets/js/scripts.js"></script>
   </body>
 </html>

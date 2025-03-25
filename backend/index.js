@@ -42,11 +42,35 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../html/index.html'));
 });
 
+// // API: Lấy tất cả dữ liệu trong bảng vehicle
+// app.get('/vehicles', (req, res) => {
+//     const sql = 'SELECT * FROM vehicle';
+//     db.query(sql, (err, results) => {
+//         if (err) {
+//             return res.status(500).json({ error: err.message });
+//         }
+//         res.json(results);
+//     });
+// });
+
+// // API: Thêm dữ liệu mới vào bảng vehicle
+// app.post('/vehicles', (req, res) => {
+//     const { motobike, car, bus, truck } = req.body;
+//     const sql = 'INSERT INTO vehicle (motobike, car, bus, truck) VALUES (?, ?, ?, ?)';
+//     db.query(sql, [motobike, car, bus, truck], (err, result) => {
+//         if (err) {
+//             return res.status(500).json({ error: err.message });
+//         }
+//         res.json({ id: result.insertId, motobike, car, bus, truck });
+//     });
+// });
+
 // API: Lấy tất cả dữ liệu trong bảng vehicle
 app.get('/vehicles', (req, res) => {
-    const sql = 'SELECT * FROM vehicle';
+    const sql = 'SELECT id, motobike, car, bus, truck, timestamp FROM vehicle ORDER BY id DESC';
     db.query(sql, (err, results) => {
         if (err) {
+            console.error('Error fetching data:', err.message);
             return res.status(500).json({ error: err.message });
         }
         res.json(results);
@@ -56,12 +80,14 @@ app.get('/vehicles', (req, res) => {
 // API: Thêm dữ liệu mới vào bảng vehicle
 app.post('/vehicles', (req, res) => {
     const { motobike, car, bus, truck } = req.body;
-    const sql = 'INSERT INTO vehicle (motobike, car, bus, truck) VALUES (?, ?, ?, ?)';
-    db.query(sql, [motobike, car, bus, truck], (err, result) => {
+    const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' '); // Định dạng YYYY-MM-DD HH:mm:ss
+    const sql = 'INSERT INTO vehicle (motobike, car, bus, truck, timestamp) VALUES (?, ?, ?, ?, ?)';
+    db.query(sql, [motobike, car, bus, truck, timestamp], (err, result) => {
         if (err) {
+            console.error('Error inserting data:', err.message);
             return res.status(500).json({ error: err.message });
         }
-        res.json({ id: result.insertId, motobike, car, bus, truck });
+        res.json({ id: result.insertId, motobike, car, bus, truck, timestamp });
     });
 });
 
