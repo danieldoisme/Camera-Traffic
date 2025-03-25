@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../assets/js/scripts.js"></script>
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <h3 class="camera-home-title">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/4269/4269808.png"
+          alt="Camera Icon"
+          class="sidebar-icon"
+        />
+        Camera Home
+      </h3>
+      <a href="index.html">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/8899/8899687.png"
+          alt="Dashboard Icon"
+          class="sidebar-icon"
+        />
+        Dashboard
+      </a>
+      <a href="/html/channels.html">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/2818/2818072.png"
+          alt="Channels Icon"
+          class="sidebar-icon"
+        />
+        Channels
+      </a>
+      <a href="/html/groups.html">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/4144/4144517.png"
+          alt="Groups Icon"
+          class="sidebar-icon"
+        />
+        Groups
+      </a>
+      <a href="/html/output.html">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/3488/3488340.png"
+          alt="Output Icon"
+          class="sidebar-icon"
+        />
+        Output
+      </a>
+      <a href="#">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/675/675729.png"
+          alt="Settings Icon"
+          class="sidebar-icon"
+        />
+        Settings
+      </a>
+      <hr class="divider" />
+      <a href="#">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/14993/14993522.png"
+          alt="Logout Icon"
+          class="sidebar-icon"
+        />
+        Logout
+      </a>
+    </div>
+    <div class="content">
+      <div class="topbar">
+        <div class="search-container">
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/18222/18222076.png"
+            alt="Custom Icon"
+            class="custom-search-icon"
+          />
+          <input type="text" class="form-control" placeholder="Search" />
+        </div>
+        <div class="admin-container">
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/4814/4814852.png"
+            alt="Avatar"
+            class="avatar"
+          />
+          <button class="btn btn-dark admin-btn">
+            Hello, Thắng
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/10255/10255622.png"
+              alt="Triangle Icon"
+            />
+          </button>
+        </div>
+      </div>
+      <div class="model-bar">
+        <span class="stat vip">Model: Các anh trai say bye </span>
+        <span class="stat vehicles">Vehicles: 0.5%</span>
+        <span class="stat bike">Bike: 0.9%</span>
+        <span class="stat person">Person: 1.2%</span>
+        <span class="stat collision">Collision: 0.1%</span>
+        <span class="stat near-miss">Near Miss: 2.5%</span>
+        <a href="#" class="config-btn">
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/3078/3078528.png"
+            alt="Configure Icon"
+          />
+          Configure
+        </a>
+      </div>
+      <div class="container">
+        <div class="left-panel">
+          <div class="card-box">
+            <div class="card">
+              <h3>Collision</h3>
+              <span>0</span>
+            </div>
+            <div class="card">
+              <h3>Pedestrian</h3>
+              <span>0</span>
+            </div>
+            <div class="card">
+              <h3>Vehicle</h3>
+              <span>0</span>
+            </div>
+            <div class="card">
+              <h3>Bike</h3>
+              <span>0</span>
+            </div>
+          </div>
+          <div class="stream-wrapper">
+            <h3 class="stream-header">
+              Camera Stream
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/7304/7304806.png"
+                alt="Expand Icon"
+                class="expand-icon"
+              />
+            </h3>
+            <div class="stream">
+              <video
+                id="cameraFeed"
+                width="100%"
+                height="100%"
+                autoplay
+                playsinline
+                muted
+                style="object-fit: cover; border-radius: 8px"
+              ></video>
+            </div>
+          </div>
+        </div>
+        <div class="right-panel">
+          <div class="chart-container">
+            <h3 class="chart-title">Traffic Flow</h3>
+            <canvas id="trafficFlow"></canvas>
+          </div>
+          <div class="chart-container">
+            <h3 class="chart-title">Traffic Analysis</h3>
+            <canvas id="trafficAnalysis"></canvas>
+          </div>
+          <div class="chart-container">
+            <h3 class="chart-title">Collision Near Miss</h3>
+            <canvas id="collisionNearMiss"></canvas>
+          </div>
+          <div class="chart-container">
+            <h3 class="chart-title">Collision Analysis</h3>
+            <canvas id="collisionAnalysis"></canvas>
+          </div>
+        </div>
+      </div>
+      <!-- Thêm thanh thông tin -->
+      <div class="info-bar">
+        <div class="info-content">
+          <span>Nhóm Vippro</span>
+          <span
+            >...............................................................................................................................................................................................................................................
+          </span>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms and conditions</a>
+          <a href="#">Contact</a>
+          <a href="#">Apps</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
