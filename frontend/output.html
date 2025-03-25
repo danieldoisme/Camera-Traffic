@@ -12,30 +12,15 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" href="/assets/css/styles.css" />
-    <style>
-      /* CSS cho camera container */
-      .camera-container {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        /* 6 cột */
-        grid-template-rows: repeat(4, 1fr);
-        /* 4 hàng */
-        gap: 20px;
-        /* Khoảng cách giữa các ảnh */
-        padding: 20px;
-        /* Padding để cách lề ngoài */
-        height: auto;
-        /* Đổi thành auto để tự điều chỉnh chiều cao theo nội dung */
-        margin-bottom: 10px;
-        /* Giữ khoảng cách với pagination */
-      }
-    </style>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
   </head>
 
   <body>
     <!-- Thanh sidebar -->
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
+      <button id="sidebarToggle" class="d-md-none sidebar-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
       <h3 class="camera-home-title">
         <img
           src="https://cdn-icons-png.flaticon.com/128/4269/4269808.png"
@@ -44,7 +29,7 @@
         />
         Camera Home
       </h3>
-      <a href="/frontend/index.html">
+      <a href="./index.html">
         <img
           src="https://cdn-icons-png.flaticon.com/128/8899/8899687.png"
           alt="Dashboard Icon"
@@ -52,7 +37,7 @@
         />
         Dashboard
       </a>
-      <a href="/frontend/channels.html">
+      <a href="./channels.html">
         <img
           src="https://cdn-icons-png.flaticon.com/128/2818/2818072.png"
           alt="Channels Icon"
@@ -60,7 +45,7 @@
         />
         Channels
       </a>
-      <a href="/frontend/groups.html">
+      <a href="./groups.html">
         <img
           src="https://cdn-icons-png.flaticon.com/128/4144/4144517.png"
           alt="Groups Icon"
@@ -68,7 +53,7 @@
         />
         Groups
       </a>
-      <a href="/frontend/output.html">
+      <a href="./output.html">
         <img
           src="https://cdn-icons-png.flaticon.com/128/3488/3488340.png"
           alt="Output Icon"
@@ -157,7 +142,7 @@
           <h3 class="stream-header">Image 1</h3>
           <div class="stream">
             <img
-              src="1_Vehicle.jpg"
+              src="../assets/images/1_Vehicle.jpg"
               alt="Image 1"
               width="100%"
               height="100%"
@@ -169,7 +154,7 @@
           <h3 class="stream-header">Image 2</h3>
           <div class="stream">
             <img
-              src="2_Vehicle.jpg"
+              src="../assets/images/2_Vehicle.jpg"
               alt="Image 2"
               width="100%"
               height="100%"
@@ -181,7 +166,7 @@
           <h3 class="stream-header">Image 3</h3>
           <div class="stream">
             <img
-              src="3_Vehicle.jpg"
+              src="../assets/images/3_Vehicle.jpg"
               alt="Image 3"
               width="100%"
               height="100%"
@@ -193,7 +178,7 @@
           <h3 class="stream-header">Image 4</h3>
           <div class="stream">
             <img
-              src="4_Vehicle.jpg"
+              src="../assets/images/4_Vehicle.jpg"
               alt="Image 4"
               width="100%"
               height="100%"
@@ -205,7 +190,7 @@
           <h3 class="stream-header">Image 5</h3>
           <div class="stream">
             <img
-              src="5_Vehicle.jpg"
+              src="../assets/images/5_Vehicle.jpg"
               alt="Image 5"
               width="100%"
               height="100%"
@@ -217,7 +202,7 @@
           <h3 class="stream-header">Image 6</h3>
           <div class="stream">
             <img
-              src="6_Vehicle.jpg"
+              src="../assets/images/6_Vehicle.jpg"
               alt="Image 6"
               width="100%"
               height="100%"
@@ -229,7 +214,7 @@
           <h3 class="stream-header">Image 7</h3>
           <div class="stream">
             <img
-              src="7_Vehicle.jpg"
+              src="../assets/images/7_Vehicle.jpg"
               alt="Image 7"
               width="100%"
               height="100%"
@@ -241,7 +226,7 @@
           <h3 class="stream-header">Image 8</h3>
           <div class="stream">
             <img
-              src="8_Vehicle.jpg"
+              src="../assets/images/8_Vehicle.jpg"
               alt="Image 8"
               width="100%"
               height="100%"
@@ -253,7 +238,7 @@
           <h3 class="stream-header">Image 9</h3>
           <div class="stream">
             <img
-              src="9_Vehicle.jpg"
+              src="../assets/images/9_Vehicle.jpg"
               alt="Image 9"
               width="100%"
               height="100%"
@@ -265,7 +250,7 @@
           <h3 class="stream-header">Image 10</h3>
           <div class="stream">
             <img
-              src="10_Vehicle.jpg"
+              src="../assets/images/10_Vehicle.jpg"
               alt="Image 10"
               width="100%"
               height="100%"
@@ -277,7 +262,7 @@
           <h3 class="stream-header">Image 11</h3>
           <div class="stream">
             <img
-              src="11_Vehicle.jpg"
+              src="../assets/images/11_Vehicle.jpg"
               alt="Image 11"
               width="100%"
               height="100%"
@@ -289,7 +274,7 @@
           <h3 class="stream-header">Image 12</h3>
           <div class="stream">
             <img
-              src="12_Vehicle.jpg"
+              src="../assets/images/12_Vehicle.jpg"
               alt="Image 12"
               width="100%"
               height="100%"
@@ -301,7 +286,7 @@
           <h3 class="stream-header">Image 13</h3>
           <div class="stream">
             <img
-              src="13_Vehicle.jpg"
+              src="../assets/images/13_Vehicle.jpg"
               alt="Image 13"
               width="100%"
               height="100%"
@@ -313,7 +298,7 @@
           <h3 class="stream-header">Image 14</h3>
           <div class="stream">
             <img
-              src="14_Vehicle.jpg"
+              src="../assets/images/14_Vehicle.jpg"
               alt="Image 14"
               width="100%"
               height="100%"
@@ -325,7 +310,7 @@
           <h3 class="stream-header">Image 15</h3>
           <div class="stream">
             <img
-              src="15_Vehicle.jpg"
+              src="../assets/images/15_Vehicle.jpg"
               alt="Image 15"
               width="100%"
               height="100%"
@@ -337,7 +322,7 @@
           <h3 class="stream-header">Image 16</h3>
           <div class="stream">
             <img
-              src="16_Vehicle.jpg"
+              src="../assets/images/16_Vehicle.jpg"
               alt="Image 16"
               width="100%"
               height="100%"
@@ -349,7 +334,7 @@
           <h3 class="stream-header">Image 17</h3>
           <div class="stream">
             <img
-              src="17_Vehicle.jpg"
+              src="../assets/images/17_Vehicle.jpg"
               alt="Image 17"
               width="100%"
               height="100%"
@@ -361,7 +346,7 @@
           <h3 class="stream-header">Image 18</h3>
           <div class="stream">
             <img
-              src="18_Vehicle.jpg"
+              src="../assets/images/18_Vehicle.jpg"
               alt="Image 18"
               width="100%"
               height="100%"
@@ -373,7 +358,7 @@
           <h3 class="stream-header">Image 19</h3>
           <div class="stream">
             <img
-              src="19_Vehicle.jpg"
+              src="../assets/images/19_Vehicle.jpg"
               alt="Image 19"
               width="100%"
               height="100%"
@@ -385,7 +370,7 @@
           <h3 class="stream-header">Image 20</h3>
           <div class="stream">
             <img
-              src="20_Vehicle.jpg"
+              src="../assets/images/20_Vehicle.jpg"
               alt="Image 20"
               width="100%"
               height="100%"
@@ -397,7 +382,7 @@
           <h3 class="stream-header">Image 21</h3>
           <div class="stream">
             <img
-              src="21_Vehicle.jpg"
+              src="../assets/images/21_Vehicle.jpg"
               alt="Image 21"
               width="100%"
               height="100%"
@@ -409,7 +394,7 @@
           <h3 class="stream-header">Image 22</h3>
           <div class="stream">
             <img
-              src="22_Vehicle.jpg"
+              src="../assets/images/22_Vehicle.jpg"
               alt="Image 22"
               width="100%"
               height="100%"
@@ -421,7 +406,7 @@
           <h3 class="stream-header">Image 23</h3>
           <div class="stream">
             <img
-              src="23_Vehicle.jpg"
+              src="../assets/images/23_Vehicle.jpg"
               alt="Image 23"
               width="100%"
               height="100%"
@@ -433,7 +418,7 @@
           <h3 class="stream-header">Image 24</h3>
           <div class="stream">
             <img
-              src="24_Vehicle.jpg"
+              src="../assets/images/24_Vehicle.jpg"
               alt="Image 24"
               width="100%"
               height="100%"
@@ -465,6 +450,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/assets/javascript/scripts.js"></script>
+    <script src="../assets/javascript/scripts.js"></script>
   </body>
 </html>

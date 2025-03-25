@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Dashboard</title>
     <link
       rel="stylesheet"
@@ -13,11 +16,14 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
   </head>
 
   <body>
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
+      <button id="sidebarToggle" class="d-md-none sidebar-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
       <h3 class="camera-home-title">
         <img
           src="https://cdn-icons-png.flaticon.com/128/4269/4269808.png"
@@ -26,7 +32,7 @@
         />
         Camera Home
       </h3>
-      <a href="/frontend/index.html">
+      <a href="./index.html">
         <img
           src="https://cdn-icons-png.flaticon.com/128/8899/8899687.png"
           alt="Dashboard Icon"
@@ -34,7 +40,7 @@
         />
         Dashboard
       </a>
-      <a href="/frontend/channels.html">
+      <a href="./channels.html">
         <img
           src="https://cdn-icons-png.flaticon.com/128/2818/2818072.png"
           alt="Channels Icon"
@@ -42,7 +48,7 @@
         />
         Channels
       </a>
-      <a href="/frontend/groups.html">
+      <a href="./groups.html">
         <img
           src="https://cdn-icons-png.flaticon.com/128/4144/4144517.png"
           alt="Groups Icon"
@@ -50,7 +56,7 @@
         />
         Groups
       </a>
-      <a href="/frontend/output.html">
+      <a href="./output.html">
         <img
           src="https://cdn-icons-png.flaticon.com/128/3488/3488340.png"
           alt="Output Icon"
@@ -76,6 +82,7 @@
         Logout
       </a>
     </div>
+
     <div class="content">
       <div class="topbar">
         <div class="search-container">
@@ -116,76 +123,92 @@
           Configure
         </a>
       </div>
-      <div class="container">
-        <div class="left-panel">
-          <div class="card-box">
-            <div class="card">
-              <h3>Collision</h3>
-              <span>0</span>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="card-box row g-1">
+              <div class="col-6 col-sm-3">
+                <div class="card">
+                  <h3>Collision</h3>
+                  <span>0</span>
+                </div>
+              </div>
+              <div class="col-6 col-sm-3">
+                <div class="card">
+                  <h3>Pedestrian</h3>
+                  <span>0</span>
+                </div>
+              </div>
+              <div class="col-6 col-sm-3">
+                <div class="card">
+                  <h3>Vehicle</h3>
+                  <span>0</span>
+                </div>
+              </div>
+              <div class="col-6 col-sm-3">
+                <div class="card">
+                  <h3>Bike</h3>
+                  <span>0</span>
+                </div>
+              </div>
             </div>
-            <div class="card">
-              <h3>Pedestrian</h3>
-              <span>0</span>
-            </div>
-            <div class="card">
-              <h3>Vehicle</h3>
-              <span>0</span>
-            </div>
-            <div class="card">
-              <h3>Bike</h3>
-              <span>0</span>
+            <div class="stream-wrapper">
+              <h3 class="stream-header">
+                Camera Stream
+                <img
+                  src="https://cdn-icons-png.flaticon.com/128/7304/7304806.png"
+                  alt="Expand Icon"
+                  class="expand-icon"
+                />
+              </h3>
+              <div class="stream">
+                <video
+                  id="cameraFeed"
+                  width="100%"
+                  height="100%"
+                  autoplay
+                  playsinline
+                  muted
+                  style="object-fit: cover; border-radius: 8px"
+                ></video>
+              </div>
             </div>
           </div>
-          <div class="stream-wrapper">
-            <h3 class="stream-header">
-              Camera Stream
-              <img
-                src="https://cdn-icons-png.flaticon.com/128/7304/7304806.png"
-                alt="Expand Icon"
-                class="expand-icon"
-              />
-            </h3>
-            <div class="stream">
-              <video
-                id="cameraFeed"
-                width="100%"
-                height="100%"
-                autoplay
-                playsinline
-                muted
-                style="object-fit: cover; border-radius: 8px"
-              ></video>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-sm-12 col-lg-6 mb-4">
+                <div class="chart-container">
+                  <h3 class="chart-title">Traffic Flow</h3>
+                  <canvas id="trafficFlow"></canvas>
+                </div>
+              </div>
+              <div class="col-sm-12 col-lg-6 mb-4">
+                <div class="chart-container">
+                  <h3 class="chart-title">Traffic Analysis</h3>
+                  <canvas id="trafficAnalysis"></canvas>
+                </div>
+              </div>
+              <div class="col-sm-12 col-lg-6 mb-4">
+                <div class="chart-container">
+                  <h3 class="chart-title">Collision Near Miss</h3>
+                  <canvas id="collisionNearMiss"></canvas>
+                </div>
+              </div>
+              <div class="col-sm-12 col-lg-6 mb-4">
+                <div class="chart-container">
+                  <h3 class="chart-title">Collision Analysis</h3>
+                  <canvas id="collisionAnalysis"></canvas>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="right-panel">
-          <div class="chart-container">
-            <h3 class="chart-title">Traffic Flow</h3>
-            <canvas id="trafficFlow"></canvas>
-          </div>
-          <div class="chart-container">
-            <h3 class="chart-title">Traffic Analysis</h3>
-            <canvas id="trafficAnalysis"></canvas>
-          </div>
-          <div class="chart-container">
-            <h3 class="chart-title">Collision Near Miss</h3>
-            <canvas id="collisionNearMiss"></canvas>
-          </div>
-          <div class="chart-container">
-            <h3 class="chart-title">Collision Analysis</h3>
-            <canvas id="collisionAnalysis"></canvas>
           </div>
         </div>
       </div>
-      <!-- Thêm thanh thông tin -->
       <div class="info-bar">
         <div class="info-content">
           <span>Nhóm Vippro</span>
-          <span
-            >...............................................................................................................................................................................................................................................
-          </span>
           <a href="#">Privacy Policy</a>
-          <a href="#">Terms and conditions</a>
+          <a href="#">Terms & Conditions</a>
           <a href="#">Contact</a>
           <a href="#">Apps</a>
         </div>
@@ -193,6 +216,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/assets/javascript/scripts.js"></script>
+    <script src="../assets/javascript/scripts.js"></script>
   </body>
 </html>

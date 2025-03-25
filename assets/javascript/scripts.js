@@ -65,7 +65,7 @@ function loadData() {
       // Cập nhật card với bản ghi mới nhất
       console.log("Updating cards with latest record...");
       document.getElementById("motorbikeCount").textContent =
-        latestRecord.motobike || 0;
+        latestRecord.motorbike || 0;
       document.getElementById("carCount").textContent = latestRecord.car || 0;
       document.getElementById("busCount").textContent = latestRecord.bus || 0;
       document.getElementById("truckCount").textContent =
@@ -75,7 +75,7 @@ function loadData() {
       const recentData = sortedData.slice(0, 10); // Lấy 10 bản ghi mới nhất
       const labels = recentData.map((record) => `Record ${record.id}`);
       const motorbikeData = recentData.map((record) =>
-        parseInt(record.motobike || 0)
+        parseInt(record.motorbike || 0)
       );
       const carData = recentData.map((record) => parseInt(record.car || 0));
       const busData = recentData.map((record) => parseInt(record.bus || 0));
@@ -172,35 +172,6 @@ function loadData() {
     });
 }
 
-// document.addEventListener('DOMContentLoaded', function () {
-//   console.log("DOM fully loaded, calling loadData...");
-//   // Gọi loadData khi trang được tải
-//   loadData();
-//   // Tự động làm mới dữ liệu mỗi 5 giây
-//   setInterval(() => {
-//     console.log("setInterval triggered, calling loadData...");
-//     loadData();
-//   }, 5000);
-
-//   // Webcam access
-//   console.log("Accessing webcam...");
-//   const video = document.getElementById('cameraFeed');
-//   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-//     navigator.mediaDevices
-//       .getUserMedia({ video: true })
-//       .then(function (stream) {
-//         console.log("Webcam stream obtained");
-//         video.srcObject = stream;
-//         video.play();
-//       })
-//       .catch(function (error) {
-//         console.error('Error accessing webcam:', error);
-//       });
-//   } else {
-//     console.error('getUserMedia not supported');
-//   }
-// });
-
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM fully loaded, calling loadData...");
   loadData();
@@ -224,4 +195,58 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     console.error("Element '.stream' not found");
   }
+});
+
+// Add mobile sidebar toggle functionality
+document.addEventListener("DOMContentLoaded", function () {
+  const sidebarToggle = document.getElementById("sidebarToggle");
+  const sidebar = document.getElementById("sidebar");
+
+  if (sidebarToggle && sidebar) {
+    sidebarToggle.addEventListener("click", function () {
+      sidebar.classList.toggle("active");
+    });
+  }
+
+  // Close sidebar when clicking outside on mobile
+  document.addEventListener("click", function (event) {
+    if (
+      window.innerWidth <= 768 &&
+      sidebar.classList.contains("active") &&
+      !sidebar.contains(event.target) &&
+      event.target !== sidebarToggle
+    ) {
+      sidebar.classList.remove("active");
+    }
+  });
+});
+
+// Sidebar toggle functionality
+document.addEventListener("DOMContentLoaded", function () {
+  const sidebar = document.getElementById("sidebar");
+  const sidebarToggle = document.getElementById("sidebarToggle");
+  const content = document.querySelector(".content");
+
+  // Create overlay for mobile
+  const overlay = document.createElement("div");
+  overlay.className = "sidebar-overlay";
+  document.body.appendChild(overlay);
+
+  // Toggle sidebar function
+  function toggleSidebar() {
+    sidebar.classList.toggle("active");
+    overlay.classList.toggle("active");
+  }
+
+  // Event listeners
+  sidebarToggle.addEventListener("click", toggleSidebar);
+  overlay.addEventListener("click", toggleSidebar);
+
+  // Close sidebar when window resizes to desktop size
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 768 && sidebar.classList.contains("active")) {
+      sidebar.classList.remove("active");
+      overlay.classList.remove("active");
+    }
+  });
 });

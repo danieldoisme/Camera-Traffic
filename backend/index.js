@@ -44,10 +44,25 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/index.html"));
 });
 
+// Route for handling all HTML pages in the frontend directory
+app.get("/:page.html", (req, res) => {
+  const filePath = path.join(
+    __dirname,
+    "../frontend",
+    req.params.page + ".html"
+  );
+  // Check if file exists before sending
+  if (require("fs").existsSync(filePath)) {
+    res.sendFile(filePath);
+  } else {
+    res.status(404).send("Page not found");
+  }
+});
+
 // API: Lấy tất cả dữ liệu trong bảng vehicle
 app.get("/vehicles", (req, res) => {
   const sql =
-    "SELECT id, motobike, car, bus, truck, timestamp FROM vehicle ORDER BY id DESC";
+    "SELECT id, motorbike, car, bus, truck, timestamp FROM vehicle ORDER BY id DESC";
   db.query(sql, (err, results) => {
     if (err) {
       console.error("Error fetching data:", err.message);
@@ -59,16 +74,16 @@ app.get("/vehicles", (req, res) => {
 
 // API: Thêm dữ liệu mới vào bảng vehicle
 app.post("/vehicles", (req, res) => {
-  const { motobike, car, bus, truck } = req.body;
+  const { motorbike, car, bus, truck } = req.body;
   const timestamp = new Date().toISOString().slice(0, 19).replace("T", " "); // Định dạng YYYY-MM-DD HH:mm:ss
   const sql =
-    "INSERT INTO vehicle (motobike, car, bus, truck, timestamp) VALUES (?, ?, ?, ?, ?)";
-  db.query(sql, [motobike, car, bus, truck, timestamp], (err, result) => {
+    "INSERT INTO vehicle (motorbike, car, bus, truck, timestamp) VALUES (?, ?, ?, ?, ?)";
+  db.query(sql, [motorbike, car, bus, truck, timestamp], (err, result) => {
     if (err) {
       console.error("Error inserting data:", err.message);
       return res.status(500).json({ error: err.message });
     }
-    res.json({ id: result.insertId, motobike, car, bus, truck, timestamp });
+    res.json({ id: result.insertId, motorbike, car, bus, truck, timestamp });
   });
 });
 

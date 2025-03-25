@@ -10,7 +10,7 @@ from flask import Flask, Response
 app = Flask(__name__)
 
 # Cấu hình mô hình YOLO và camera
-model = YOLO(r"E:\Năm 4 kì 2\CDHTTT\Dashboard\train\saban.pt")
+model = YOLO(r"/saban.pt")
 model.to("cpu")  # Thay "cuda" nếu mày muốn dùng GPU
 source = 0  # Camera mặc định
 videocapture = cv2.VideoCapture(source)
@@ -62,7 +62,7 @@ def generate_frames():
         global last_sent_time
         if current_time - last_sent_time >= send_interval:
             data = {
-                'motobike': vehicle_counts.get('xe may', 0),
+                'motorbike': vehicle_counts.get('xe may', 0),
                 'car': vehicle_counts.get('oto', 0),
                 'bus': vehicle_counts.get('xe bus', 0),
                 'truck': vehicle_counts.get('xe tai', 0)

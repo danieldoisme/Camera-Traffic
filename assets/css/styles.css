@@ -34,12 +34,20 @@ body {
   flex-shrink: 0;
 }
 
+/* Card box adjustments for tighter spacing */
 .card-box {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 5px; /* Reduced from 10px */
   justify-content: space-between;
   height: 80px;
+  margin-bottom: 10px;
+}
+
+/* Adjust column padding and margin */
+.card-box > [class*="col-"] {
+  padding: 0 3px; /* Minimum padding */
+  margin-bottom: 0 !important; /* Remove bottom margin */
 }
 
 .card {
@@ -48,8 +56,8 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 0;
-  height: 80px;
+  padding: 10px 5px; /* Reduced padding */
+  height: 100%;
   border: 1px solid #ddd;
   border-radius: 5px;
   font-family: Arial, sans-serif;
@@ -161,8 +169,8 @@ body {
 }
 
 .chart-container {
-  width: 230px;
-  height: 252px;
+  width: 100%;
+  min-height: 250px;
   background: white;
   padding: 0;
   border: 1px solid #ddd;
@@ -349,7 +357,7 @@ body {
   display: flex;
   align-items: center;
   background: white;
-  padding: 8px 15px;
+  padding: 10px;
   border-radius: 5px;
   box-shadow: none;
   /* Bỏ bóng đổ */
@@ -357,22 +365,24 @@ body {
   /* Bỏ viền */
   margin-bottom: 20px;
   flex-shrink: 0;
-}
-
-.model-bar span {
-  margin-right: 15px;
-  font-size: 14px;
-  color: #333;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 .model-bar .stat {
   display: flex;
   align-items: center;
-  margin-right: 15px;
+  margin: 2px;
   font-size: 14px;
   padding: 2px 8px;
   border-radius: 12px;
   color: white;
+  flex-grow: 1;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .model-bar .stat.vehicles {
@@ -467,20 +477,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-/* Style cho camera container */
-.camera-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  /* 3 cột */
-  grid-template-rows: repeat(2, 1fr);
-  /* 2 hàng */
-  gap: 20px;
-  /* Khoảng cách giữa các camera */
-  padding: 20px 0;
-  height: calc(100vh - 200px);
-  /* Điều chỉnh chiều cao */
 }
 
 /* Style cho stream */
@@ -665,23 +661,6 @@ body {
   margin: 0 5px;
 }
 
-/* CSS cho camera container */
-.camera-container {
-  margin-bottom: 20px;
-  /* Thêm khoảng cách dưới để cách pagination */
-}
-
-@media (max-width: 768px) {
-  .camera-container {
-    grid-template-columns: repeat(2, 1fr);
-    /* 2 cột trên màn hình nhỏ */
-    grid-template-rows: repeat(3, 1fr);
-    /* 3 hàng */
-    gap: 20px;
-    padding: 10px;
-  }
-}
-
 /* CSS cho info-bar */
 .info-bar {
   background: #f8f9fa;
@@ -767,15 +746,6 @@ body {
   border-radius: 8px;
 }
 
-@media (max-width: 768px) {
-  .camera-container {
-    grid-template-columns: repeat(3, 1fr);
-    /* 3 cột trên màn hình nhỏ */
-    grid-template-rows: repeat(8, 1fr);
-    /* 8 hàng */
-  }
-}
-
 /* CSS cho screenshot-bar */
 .screenshot-bar {
   display: flex;
@@ -824,4 +794,325 @@ body {
 
 .screenshot-bar .screenshot-btn:hover {
   background-color: #555;
+}
+
+/* Add responsive styles */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 0;
+    overflow: hidden;
+    position: fixed;
+    height: 100%;
+    z-index: 1000;
+    transition: width 0.3s ease;
+  }
+
+  .sidebar.active {
+    width: 250px;
+  }
+
+  .content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .sidebar-toggle {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1001;
+    background: #343a40;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+  }
+
+  .card-box {
+    flex-direction: column;
+  }
+
+  .model-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stat {
+    margin-bottom: 8px;
+  }
+}
+
+/* Ensure charts are responsive */
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 250px;
+}
+
+@media (max-width: 576px) {
+  .chart-container {
+    min-height: 200px;
+  }
+}
+
+/* Responsive camera grid */
+.camera-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* Make action bars responsive */
+@media (max-width: 768px) {
+  .channels-bar,
+  .control-bar,
+  .screenshot-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .channels-btn,
+  .control-btn,
+  .screenshot-btn {
+    margin-top: 8px;
+    width: 100%;
+  }
+
+  .sidebar {
+    width: 0;
+    overflow: hidden;
+    position: fixed;
+    height: 100%;
+    z-index: 1000;
+    transition: width 0.3s ease;
+  }
+
+  .sidebar.active {
+    width: 250px;
+  }
+
+  .content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .sidebar-toggle {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1001;
+    background: #343a40;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+  }
+
+  /* Adjust pagination for mobile */
+  .pagination {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Adjust info bar for mobile */
+  .info-bar .info-content {
+    flex-direction: column;
+  }
+
+  .info-bar .links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info-bar .links a {
+    margin: 5px 0;
+  }
+}
+
+/* Ensure video and image containers are responsive */
+.stream {
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.stream video,
+.stream img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Sidebar responsive styles */
+.sidebar {
+  width: 250px;
+  position: fixed;
+  height: 100%;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Content area adjustment */
+.content {
+  margin-left: 250px;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .content {
+    margin-left: 0;
+  }
+
+  /* When sidebar is active, add overlay */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+  }
+
+  .sidebar-overlay.active {
+    display: block;
+  }
+}
+
+/* Ensure sidebar toggle button positioning */
+.sidebar-toggle {
+  position: absolute;
+  top: 10px;
+  right: -40px;
+  background: transparent;
+  border: none;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 576px) {
+  .model-bar {
+    justify-content: center;
+  }
+
+  .config-btn {
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+
+/* Make sidebar responsive with clean transitions */
+.sidebar {
+  width: 225px;
+  background: #212529;
+  color: white;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+  overflow-y: auto;
+}
+
+.content {
+  margin-left: 225px;
+  transition: margin-left 0.3s ease-in-out;
+  width: calc(100% - 225px);
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    width: 250px; /* Slightly wider on mobile for easier tap targets */
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* Ensure toggler is visible on mobile */
+  .sidebar-toggle {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1001;
+    background: #343a40;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    display: block;
+  }
+
+  /* Hide toggle on desktop */
+  @media (min-width: 769px) {
+    .sidebar-toggle {
+      display: none;
+    }
+  }
+}
+
+/* Responsive adjustments for model-bar */
+.model-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.model-bar .stat {
+  margin: 2px;
+  padding: 2px 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+@media (max-width: 576px) {
+  .model-bar {
+    justify-content: center;
+  }
+
+  .model-bar .stat {
+    flex-basis: 45%;
+    text-align: center;
+  }
+
+  .config-btn {
+    width: 100%;
+    margin-top: 5px;
+    justify-content: center;
+  }
 }
