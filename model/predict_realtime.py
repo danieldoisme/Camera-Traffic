@@ -1,16 +1,16 @@
-import cv2
-import numpy as np
-from ultralytics import YOLO
-from ultralytics.utils.plotting import Annotator, colors
-import requests
+import cv2 # type: ignore
+import numpy as np # type: ignore
+from ultralytics import YOLO # type: ignore
+from ultralytics.utils.plotting import Annotator, colors # type: ignore
+import requests # type: ignore
 import time
-from flask import Flask, Response
+from flask import Flask, Response # type: ignore
 
 # Khởi tạo Flask app
 app = Flask(__name__)
 
 # Cấu hình mô hình YOLO và camera
-model = YOLO(r"/saban.pt")
+model = YOLO(r"saban.pt")
 model.to("cpu")  # Thay "cuda" nếu mày muốn dùng GPU
 source = 0  # Camera mặc định
 videocapture = cv2.VideoCapture(source)
